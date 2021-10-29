@@ -1,6 +1,7 @@
 package com.example.room;
 
 import androidx.room.Dao;
+import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
 
@@ -13,4 +14,7 @@ public interface PeliculaDAO {
 
     @Insert
     void addPelicula(Pelicula ... peliculas);
+
+    @Delete
+    void eliminarPelicula(Pelicula pelicula);
 }

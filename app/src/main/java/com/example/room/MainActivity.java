@@ -2,6 +2,7 @@ package com.example.room;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -14,7 +15,6 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
     EditText etTitulo, etDescripcion, etAnho, etPoster;
     AppDatabaseDataSource dataSource;
-    TextView tvMostrar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,11 +25,8 @@ public class MainActivity extends AppCompatActivity {
         etDescripcion = findViewById(R.id.etDescripcion);
         etAnho = findViewById(R.id.etAnho);
         etPoster = findViewById(R.id.etPoster);
-        tvMostrar = findViewById(R.id.tvMostrar);
 
         dataSource = new AppDatabaseDataSource(this);
-        tvMostrar.setText("");
-
     }
 
     public void agregar(View view) {
@@ -46,15 +43,8 @@ public class MainActivity extends AppCompatActivity {
         Toast.makeText(getApplicationContext(), "Se guardó", Toast.LENGTH_SHORT).show();
     }
 
-
     public void mostrar(View view) {
-        List<Pelicula> peliculas = dataSource.traerPelicula();
-        for(Pelicula pelicula: peliculas){
-            tvMostrar.append(
-                    "Titulo: "+pelicula.getTitulo()+"\n"+
-                    "Año: "+pelicula.getAnho()+"\n"+
-                    "Descripcion: "+pelicula.getDescripcion()+"\n\n"
-            );
-        }
+        Intent intent = new Intent(getApplicationContext(), MainActivity2.class);
+        startActivity(intent);
     }
 }

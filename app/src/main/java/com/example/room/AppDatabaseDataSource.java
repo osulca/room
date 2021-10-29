@@ -20,4 +20,8 @@ public class AppDatabaseDataSource {
     public List<Pelicula> traerPelicula(){
         return peliculaDAO.traerTodo();
     }
+
+    public void eliminarPelicula(Pelicula pelicula){
+        peliculaDAO.eliminarPelicula(pelicula);
+    }
 }
